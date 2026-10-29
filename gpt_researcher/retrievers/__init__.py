@@ -1,3 +1,4 @@
+from .desearch.desearch import DesearchSearch
 from .arxiv.arxiv import ArxivSearch
 from .bing.bing import BingSearch
 from .brave.brave import BraveSearch
@@ -21,6 +22,7 @@ from .xquik.xquik import XquikSearch
 from .openalex.openalex import OpenAlexSearch
 
 __all__ = [
+    "DesearchSearch",
     "TavilySearch",
     "GroundRouteSearch",
     "CustomRetriever",

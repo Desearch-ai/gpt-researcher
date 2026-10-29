@@ -51,6 +51,22 @@ Thanks to our community, we have integrated the following web search engines and
 
 Other search providers can be installed as separate packages. See [Retriever Plugins](./retriever-plugins.md).
 
+## Desearch
+
+Set `RETRIEVER=desearch` and provide `DESEARCH_API_KEY` in the process environment.
+Obtain a key from [Desearch](https://desearch.ai/). Keep the key out of source files.
+
+The retriever sends one GET request to `https://api.desearch.ai/web` with `query`
+and `num` parameters and Bearer authentication. It maps each result's `title`,
+`link`, and `snippet` to `title`, `href`, and `body`. The default result limit is
+seven. Domain filtering is not supported by this endpoint. API failures return
+an empty result list; a missing key raises a configuration error.
+
+To check the integration without installing the full application, install
+`requests` and run `python tests/retrievers/desearch/live_check.py` from the
+repository root. This sends one search for `bittensor` and prints only the result
+count and first title. A nonzero exit status indicates no results were returned.
+
 ## Custom Retrievers
 
 You can also use any custom retriever of your choice by specifying the `RETRIEVER=custom` env var.

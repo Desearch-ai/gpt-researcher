@@ -23,6 +23,7 @@ def get_retriever(retriever: str):
         The retriever class if found, None otherwise.
 
     Supported retrievers:
+        - desearch: Desearch web search
         - google: Google Custom Search
         - searx: SearX search engine
         - searchapi: SearchAPI service
@@ -47,6 +48,10 @@ def get_retriever(retriever: str):
     ``gpt_researcher.retrievers`` entry-point group. Built-in names always win.
     """
     match retriever:
+        case "desearch":
+            from gpt_researcher.retrievers import DesearchSearch
+
+            return DesearchSearch
         case "google":
             from gpt_researcher.retrievers import GoogleSearch
 
